@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aux_Cord</title>
+        <link rel="stylesheet" type="text/css" href="{% static "/main.css" %}" />
+    </head>
+    <body>
+        <div class="hero-image">
+            <div class="hero-text">
+                <h1>Aux_Cord</h1>
+                <h2>Create a customized playlist for two listeners with machine learning!</h2>
+            </div>
+        </div>
+
+        <div class="frame">
+            <h1>Welcome to the Aux_Cord Spotify playlist generator!</h1>
+            <form method="get">
+                {% csrf_token %}
+                <table class="form">
+                {{ form }}
+                </table>
+                <input type="submit" value="Generate" />
+            </form>
+        </div>
+        <br>
+        <div class="frame">
+            {% if result != None %}
+            <div class="results">
+                {% if features != None %}
+                    <h1>Audio Feature Histogram: </h1>
+                    {% if acousticness %}
+                        <img src="{% static "acousticness_plot.png" %}" alt= "Acousticness Plot" width="350">
+                    {% endif %}
+                    {% if danceability %}
+                        <img src="{% static "danceability_plot.png" %}" alt= "Danceability Plot" width="350">
+                    {% endif %}
+                    {% if energy %}
+                        <img src="{% static "energy_plot.png" %}" alt= "Energy Plot" width="350">
+                    {% endif %}
+                    {% if instrumentalness %}
+                        <img src="{% static "instrumentalness_plot.png" %}" alt= "Instrumentalness Plot" width="350">
+                    {% endif %}
+                    {% if liveness %}
+                        <img src="{% static "liveness_plot.png" %}" alt= "Liveness Plot" width="350">
+                    {% endif %}
+                    {% if speechiness %}
+                        <img src="{% static "speechiness_plot.png" %}" alt= "Speechiness Plot" width="350">
+                    {% endif %}
+                    {% if valence %}
+                        <img src="{% static "valence_plot.png" %}" alt= "Valence Plot" width="350">
+                    {% endif %}
+                {% endif %}
+                {% if show_tree %}
+                    <br>
+                    <h1>Decision Tree: </h1>
+                    <img src="{% static "tree.png" %}" alt="tree" width="500" display>
+                {% endif %}
+                <table class="songs">
+                    <tr>
+                        <h1>New Playlist: </h1>
+                        {% for col in columns %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for entry in result %}
+                    <tr>
+                        <td>{{ entry.0 }}</td>
+                        <td>{{ entry.1 }}</td>
+                        <td>{{ entry.2 }}</td>
+                        {% if entry.3 == None %}
+                            <td>No Preview Found</td>
+                        {% else %}
+                            <td><a href='{{ entry.3 }}' target="_blank">Preview</a></td>
+                        {%endif%}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <br>
+            {% endif %}
+        </div>
+    </body>
+</html>

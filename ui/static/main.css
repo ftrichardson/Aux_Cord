@@ -1,0 +1,123 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica;
+    height: 100%;
+}
+
+
+div.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("hero.jpg");
+  height: 35%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+div.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+
+div.frame {
+    margin-left: 10em;
+    margin-top: 3em;
+}
+
+div.args {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #ffe;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+fieldset {
+    padding: 3px;
+    margin: 1px;
+    border: 1px solid #ddd;
+}
+
+fieldset legend {
+    font-weight: bold;
+    font-size: 9px;
+}
+
+input.query {
+    font-size: 18px;
+}
+
+label {
+    font-size: 15px;
+}
+
+
+table.form {
+    text-align: left;
+    margin-right: 50px;
+}
+
+table.form tr td,
+table.form tr th {
+    vertical-align: top;
+}
+
+table.form input {
+    margin-right: 5px;
+}
+
+table.form input#id_query {
+    font-size: 1px;
+}
+
+table.form ul#id_features {
+    margin: 0px;
+    padding: 0px;
+}
+
+table.form ul#id_features li {
+    display: block;
+    float: left;
+    font-size: 5px;
+    margin: 0px;
+    padding: 0px;
+}
+
+table.songs {
+    border: 1px solid #ddd;
+    padding: 0px;
+    margin: 0px;
+}
+
+div.results h1{
+    font-size: 20px;
+}
+
+table.songs tr th {
+    text-align: left;
+}
+
+table.songs tr td,
+table.songs tr th {
+    padding: 3px;
+    font-size: 12px;
+}
+
+table.songs tr:nth-child(even) {
+    background: #eee;
+}
+
+span.helptext {
+    font-size: 11px;
+    color: gray;
+}
+
+
